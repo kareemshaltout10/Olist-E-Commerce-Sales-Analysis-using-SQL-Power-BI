@@ -1,14 +1,14 @@
--- total sales by year 
+-- total sales by month 
 
 select 
-cast(datetrunc(month,o.order_delivered_customer_date) as date) date_month ,
+cast(datetrunc(month,o.order_purchase_timestamp) as date) date_month ,
 sum(i.price) as total_sales 
 from orders o
 join order_items i
 on o.order_id = i.order_id
 where o.order_status = 'delivered'
-group by datetrunc(month,o.order_delivered_customer_date)  
-order by datetrunc(month,o.order_delivered_customer_date) 
+group by datetrunc(month,o.order_purchase_timestamp)  
+order by datetrunc(month,o.order_purchase_timestamp) 
 
 -- How has the company's revenue changed month over month?
 
