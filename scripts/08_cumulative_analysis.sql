@@ -27,12 +27,3 @@ select
 cast(round((cumulative_revenue * 100.0 / sum(total_revenue) over()),2) as decimal(10,2) ) as cumulative_percentage
 from cumulativerevenue
 
-
-
--- Key Insights
-
--- São Paulo (SP) is the largest revenue-generating state, contributing approximately **38.33%** of the total revenue.
--- The top **2 states (SP and RJ)** account for over **51.64%** of total revenue.
--- The top **6 states** contribute around **77.77%** of the company's total revenue.
--- The top **7 states** generate approximately **81.50%** of the total revenue, indicating that revenue is highly concentrated in a small number of states.
--- This concentration suggests that marketing campaigns, logistics improvements, and inventory planning should prioritize these high-performing states.
