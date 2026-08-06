@@ -95,8 +95,31 @@ case
 end product_class
 from cumulativepercentage 
 
--- Product categories were classified using the ABC Analysis technique.
--- Category A contributes to approximately 80% of total revenue.
--- Category B contributes to the next 15%.
--- Category C contributes to the remaining 5%.
--- This helps the business prioritize inventory, marketing, and supplier management.
+
+-- Number of customers who made a one-time purchase.
+
+with One_Time_Customers as
+(
+select 
+customer_unique_id,
+count(order_id) as orders
+from customers c
+inner join orders o
+on o.customer_id = c.customer_id
+group by customer_unique_id
+having count(order_id) = 1
+)
+
+select 
+'One Time Customers' as metric,
+count(*) as value
+from One_Time_Customers
+
+union all
+
+select 
+'total_customer' as metric ,
+count(customer_unique_id) as value
+from customers
+
+
