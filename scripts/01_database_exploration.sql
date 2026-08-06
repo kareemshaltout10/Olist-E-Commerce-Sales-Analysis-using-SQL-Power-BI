@@ -44,3 +44,12 @@ select 'category_translation', count(*)
 from category_translation
 
 order by total_records desc;
+
+-- Number of orders in each order status
+
+select 
+count(*) as orders ,
+order_status
+from orders
+group by order_status
+order by count(*) desc
